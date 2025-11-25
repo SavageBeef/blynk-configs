@@ -1,0 +1,12 @@
+services:
+  blynk:
+    container_name: blynk
+    image: hokori/blynk-server:0.41.17
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+      - "9443:9443"
+    volumes:
+      - /mnt/sda1/blynk/config/server.properties:/blynk/config/server.properties
+      - /mnt/sda1/blynk/data:/blynk/data
+    network_mode: "bridge"
