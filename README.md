@@ -62,6 +62,19 @@ Windows
 docker restart blynk
 ```
 
+## ⚙️ Manual User Creation
+
+This process requires direct access to your server's data folder and a restart of the Blynk server.
+
+| Step | Action | Description |
+| :--- | :--- | :--- |
+| **1. Locate Data** | Find the **Blynk data folder** (specified by the `-dataFolder` argument). | |
+| **2. Copy File** | Copy an existing user file (e.g., `admin@blynk.cc.Blynk.user`). | |
+| **3. Rename File** | Rename the copied file to the new user's email: `newuser@example.com.Blynk.user`. | New user account created. |
+| **4. Edit File** | Open the new `.Blynk.user` file and **replace all instances** of the old email with the new email. | *Save and close the file.* |
+| **5. Restart Server** | Stop the Blynk server process (e.g., `Ctrl+C` with script) and then restart it. | The server will load the new user data. Docker: `docker restart blynk`. |
+| **6. Set Password** | Log into the **Admin UI** (e.g., `https://<YourServerIP>:9443/admin`). | Locate the new user and set their initial password. |
+
 ## Data persistence and backups
 
 The `blynk/data` directory contains user data and should be regularly backed up if you don't wanna start over everytime. Copy the `blynk/data` directory to your backup location or use a scheduled job.
